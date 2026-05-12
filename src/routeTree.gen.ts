@@ -16,6 +16,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppTasksRouteImport } from './routes/app.tasks'
 import { Route as AppReportsRouteImport } from './routes/app.reports'
 import { Route as AppDashboardRouteImport } from './routes/app.dashboard'
+import { Route as AppChatRouteImport } from './routes/app.chat'
 import { Route as AppAnalyzerRouteImport } from './routes/app.analyzer'
 import { Route as AppAnalyticsRouteImport } from './routes/app.analytics'
 
@@ -54,6 +55,11 @@ const AppDashboardRoute = AppDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => AppRoute,
 } as any)
+const AppChatRoute = AppChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppAnalyzerRoute = AppAnalyzerRouteImport.update({
   id: '/analyzer',
   path: '/analyzer',
@@ -72,6 +78,7 @@ export interface FileRoutesByFullPath {
   '/signup': typeof SignupRoute
   '/app/analytics': typeof AppAnalyticsRoute
   '/app/analyzer': typeof AppAnalyzerRoute
+  '/app/chat': typeof AppChatRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app/reports': typeof AppReportsRoute
   '/app/tasks': typeof AppTasksRoute
@@ -83,6 +90,7 @@ export interface FileRoutesByTo {
   '/signup': typeof SignupRoute
   '/app/analytics': typeof AppAnalyticsRoute
   '/app/analyzer': typeof AppAnalyzerRoute
+  '/app/chat': typeof AppChatRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app/reports': typeof AppReportsRoute
   '/app/tasks': typeof AppTasksRoute
@@ -95,6 +103,7 @@ export interface FileRoutesById {
   '/signup': typeof SignupRoute
   '/app/analytics': typeof AppAnalyticsRoute
   '/app/analyzer': typeof AppAnalyzerRoute
+  '/app/chat': typeof AppChatRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app/reports': typeof AppReportsRoute
   '/app/tasks': typeof AppTasksRoute
@@ -108,6 +117,7 @@ export interface FileRouteTypes {
     | '/signup'
     | '/app/analytics'
     | '/app/analyzer'
+    | '/app/chat'
     | '/app/dashboard'
     | '/app/reports'
     | '/app/tasks'
@@ -119,6 +129,7 @@ export interface FileRouteTypes {
     | '/signup'
     | '/app/analytics'
     | '/app/analyzer'
+    | '/app/chat'
     | '/app/dashboard'
     | '/app/reports'
     | '/app/tasks'
@@ -130,6 +141,7 @@ export interface FileRouteTypes {
     | '/signup'
     | '/app/analytics'
     | '/app/analyzer'
+    | '/app/chat'
     | '/app/dashboard'
     | '/app/reports'
     | '/app/tasks'
@@ -193,6 +205,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppDashboardRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/chat': {
+      id: '/app/chat'
+      path: '/chat'
+      fullPath: '/app/chat'
+      preLoaderRoute: typeof AppChatRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/analyzer': {
       id: '/app/analyzer'
       path: '/analyzer'
@@ -213,6 +232,7 @@ declare module '@tanstack/react-router' {
 interface AppRouteChildren {
   AppAnalyticsRoute: typeof AppAnalyticsRoute
   AppAnalyzerRoute: typeof AppAnalyzerRoute
+  AppChatRoute: typeof AppChatRoute
   AppDashboardRoute: typeof AppDashboardRoute
   AppReportsRoute: typeof AppReportsRoute
   AppTasksRoute: typeof AppTasksRoute
@@ -221,6 +241,7 @@ interface AppRouteChildren {
 const AppRouteChildren: AppRouteChildren = {
   AppAnalyticsRoute: AppAnalyticsRoute,
   AppAnalyzerRoute: AppAnalyzerRoute,
+  AppChatRoute: AppChatRoute,
   AppDashboardRoute: AppDashboardRoute,
   AppReportsRoute: AppReportsRoute,
   AppTasksRoute: AppTasksRoute,
