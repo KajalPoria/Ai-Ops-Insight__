@@ -139,6 +139,8 @@
 
 @layer base {
   * { border-color: var(--color-border); }
+  html { font-size: 18px; }
+  @media (max-width: 640px) { html { font-size: 17px; } }
   html, body { font-family: var(--font-sans); }
   body {
     background-color: var(--color-background);
